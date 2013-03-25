@@ -12,12 +12,16 @@
 
 @implementation YHXAppDelegate
 
+@synthesize my;
+@synthesize str;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[YHXViewController alloc] initWithNibName:@"YHXViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.nav = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+    self.window.rootViewController = self.nav;
     [self.window makeKeyAndVisible];
     return YES;
 }
