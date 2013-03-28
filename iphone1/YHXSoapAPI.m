@@ -607,6 +607,9 @@
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil];
         [alert show];
+
+        NSNotificationCenter *nc1 = [NSNotificationCenter defaultCenter];
+        [nc1 postNotificationName:@"False" object:self ];
     }
     
     
@@ -652,14 +655,21 @@
         //发送notification
          NSLog(@"getXMLResults%@  1212344",getXMLResults);
         NSLog(@"soapResults%@  1212344",soapResults);
-
-    
-        
     
      if([soapResults rangeOfString:@"000"].length>0){                   //代码叠加   000010
         if ([getXMLResults rangeOfString:@"GetAPInfo"].length>0) {
+            if ([getXMLResults rangeOfString:@"APList>0<"].length>0) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"获取路由列表失败"
+                                                                message:[NSString stringWithFormat:@"请按右上角的刷新列表重试！"]
+                                                               delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                
+            }
+            else{
             NSLog(@"GetIPInfo………………");
-            [nc postNotificationName:@"GetIPInfo" object:self userInfo:d];
+                [nc postNotificationName:@"GetIPInfo" object:self userInfo:d];}
         }
         else if ([getXMLResults rangeOfString:@"ConfigurationStartedResponse"].length>0){
             NSLog(@"CofigurationStarted………………");
@@ -675,11 +685,12 @@
         }else if ([getXMLResults rangeOfString:@"SetEnableResponse"].length>0){
             NSLog(@"SetEnable………………");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"设置成功"
-                                                            message:[NSString stringWithFormat:@"现在可以退出程序，请等待中继器重启！"]
+                                                            message:[NSString stringWithFormat:@"按确定后将退出程序，请等待中继器重启！"]
                                                            delegate:self
                                                   cancelButtonTitle:@"确定"
                                                   otherButtonTitles:nil];
             [alert show];
+            alert.tag=1;
             [nc postNotificationName:@"SetEnable" object:self userInfo:d];
         }
     }
@@ -695,7 +706,7 @@
                                                   cancelButtonTitle:@"确定"
                                                   otherButtonTitles:nil];
             [alert show];
-            
+
         }
     else if ([soapResults rangeOfString:@"010"].length>0){                               //代码叠加 返回指令叠加  必须
             if ([getXMLResults rangeOfString:@"SetRouterWLAN"].length>0) {
@@ -717,6 +728,7 @@
         elementFound = FALSE;
         // 强制放弃解析
         [xmlParser abortParsing];
+        soapResults = nil;
     }
 }
 
@@ -731,6 +743,16 @@
 - (void) parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     if (soapResults) {
         soapResults = nil;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex :(NSInteger)buttonIndex
+{
+    if (alertView.tag==1) {
+        //if (buttonIndex==0) {
+        exit(0);
+        //}
+        
     }
 }
 

@@ -12,6 +12,11 @@
 		3C5E05E916E98EDF00FCD93F /* YHXSetPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5E05E716E98EDF00FCD93F /* YHXSetPageViewController.xib */; };
 		3C5E05FF16E9E38D00FCD93F /* YHXCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E05FD16E9E38D00FCD93F /* YHXCodeViewController.m */; };
 		3C5E060016E9E38D00FCD93F /* YHXCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5E05FE16E9E38D00FCD93F /* YHXCodeViewController.xib */; };
+		3C88BDB817040CC20028B765 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDB617040CC20028B765 /* select.png */; };
+		3C88BDB917040CC20028B765 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDB717040CC20028B765 /* selected.png */; };
+		3C88BDBC170412790028B765 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBA170412790028B765 /* 1.png */; };
+		3C88BDBD170412790028B765 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBB170412790028B765 /* 2.png */; };
+		3C88BDBF170415530028B765 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBE170415530028B765 /* 3.png */; };
 		3CF4636716E6E90A00F0FFC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636616E6E90A00F0FFC5 /* UIKit.framework */; };
 		3CF4636916E6E90A00F0FFC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636816E6E90A00F0FFC5 /* Foundation.framework */; };
 		3CF4636B16E6E90A00F0FFC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636A16E6E90A00F0FFC5 /* CoreGraphics.framework */; };
@@ -35,7 +40,12 @@
 		3C5E05FC16E9E38D00FCD93F /* YHXCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHXCodeViewController.h; sourceTree = "<group>"; };
 		3C5E05FD16E9E38D00FCD93F /* YHXCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHXCodeViewController.m; sourceTree = "<group>"; };
 		3C5E05FE16E9E38D00FCD93F /* YHXCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHXCodeViewController.xib; sourceTree = "<group>"; };
-		3CF4636216E6E90A00F0FFC5 /* iphone1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iphone1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C88BDB617040CC20028B765 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select.png; path = resource/select.png; sourceTree = "<group>"; };
+		3C88BDB717040CC20028B765 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selected.png; path = resource/selected.png; sourceTree = "<group>"; };
+		3C88BDBA170412790028B765 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = resource/1.png; sourceTree = "<group>"; };
+		3C88BDBB170412790028B765 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = resource/2.png; sourceTree = "<group>"; };
+		3C88BDBE170415530028B765 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = resource/3.png; sourceTree = "<group>"; };
+		3CF4636216E6E90A00F0FFC5 /* Extender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF4636616E6E90A00F0FFC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CF4636816E6E90A00F0FFC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CF4636A16E6E90A00F0FFC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,7 +90,7 @@
 		3CF4636316E6E90A00F0FFC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CF4636216E6E90A00F0FFC5 /* iphone1.app */,
+				3CF4636216E6E90A00F0FFC5 /* Extender.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +145,11 @@
 			isa = PBXGroup;
 			children = (
 				3CFCF8F616F9C4B80061D36E /* netgear.png */,
+				3C88BDB617040CC20028B765 /* select.png */,
+				3C88BDBA170412790028B765 /* 1.png */,
+				3C88BDBB170412790028B765 /* 2.png */,
+				3C88BDBE170415530028B765 /* 3.png */,
+				3C88BDB717040CC20028B765 /* selected.png */,
 			);
 			name = resource;
 			sourceTree = "<group>";
@@ -156,7 +171,7 @@
 			);
 			name = iphone1;
 			productName = iphone1;
-			productReference = 3CF4636216E6E90A00F0FFC5 /* iphone1.app */;
+			productReference = 3CF4636216E6E90A00F0FFC5 /* Extender.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -199,6 +214,11 @@
 				3C5E05E916E98EDF00FCD93F /* YHXSetPageViewController.xib in Resources */,
 				3C5E060016E9E38D00FCD93F /* YHXCodeViewController.xib in Resources */,
 				3CFCF8F716F9C4B80061D36E /* netgear.png in Resources */,
+				3C88BDB817040CC20028B765 /* select.png in Resources */,
+				3C88BDB917040CC20028B765 /* selected.png in Resources */,
+				3C88BDBC170412790028B765 /* 1.png in Resources */,
+				3C88BDBD170412790028B765 /* 2.png in Resources */,
+				3C88BDBF170415530028B765 /* 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +323,7 @@
 				GCC_PREFIX_HEADER = "iphone1/iphone1-Prefix.pch";
 				INFOPLIST_FILE = "iphone1/iphone1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Extender;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -315,7 +335,7 @@
 				GCC_PREFIX_HEADER = "iphone1/iphone1-Prefix.pch";
 				INFOPLIST_FILE = "iphone1/iphone1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Extender;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

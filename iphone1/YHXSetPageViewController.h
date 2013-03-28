@@ -21,7 +21,7 @@
     NSString * defualtSecurity;
     NSMutableString * defualtSSID;
     NSString * defualtCode;
-
+    NSString * NewKeyIndex;
     
     UITextField * key1TextField;
     UITextField * key2TextField;
@@ -33,6 +33,11 @@
     UILabel * key3Label;
     UILabel * key4Label;
     
+    UIButton * btn1;
+    UIButton * btn2;
+    UIButton * btn3;
+    UIButton * btn4;
+
 }
 @property(assign,nonatomic)NSMutableString * ssidExt;
 @property(assign,nonatomic)NSString * securityExt;
@@ -40,7 +45,7 @@
 @property(assign,nonatomic)NSString * defualtSecurity;
 @property(assign,nonatomic)NSMutableString * defualtSSID;
 @property(assign,nonatomic)NSString * defualtCode;
-
+@property(assign,nonatomic)NSString * NewKeyIndex;
 
 @property(assign,nonatomic)IBOutlet UITextField *name;
 @property(assign,nonatomic)IBOutlet UITextField *codeTex;

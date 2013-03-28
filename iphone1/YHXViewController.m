@@ -50,7 +50,6 @@
     [self.view addSubview:DataTable];                       //加载tableview
 
     self.navigationItem.title=@"请选择现有网络的名称";
-    //self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload)];
     tableLoaded=YES;
 }
 
@@ -99,10 +98,6 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 100;
-//}
-
 -(void)showProgress  //加载进度条
 {
     proView = [[UIProgressView alloc] initWithFrame:CGRectMake(90,250,150,20)];
@@ -132,7 +127,9 @@
 {
     self.navigationItem.rightBarButtonItem.enabled=NO;
     
+    display.text=@"NETGEAR Extender正在搜索您附近的WiFi网络。该过程需要花费一至两分钟时间；请稍后……";
 
+    
     if (viewLoaded) {
         if (tableLoaded) {
             tableLoaded=NO;
@@ -143,28 +140,10 @@
                  [security release];
                  [dataArray1 release];
                  [DataTable release];
-//                 if (setPage!=NULL) {
-//                     [setPage release];
-//                 }
+
              }];
         }[soap release];
     }
-    
-    
-    
-    
-    
-//    nc = [NSNotificationCenter defaultCenter];
-//    [nc addObserver:self selector:@selector(receive:) name:@"Authenticate" object:nil];
-//    [nc addObserver:self selector:@selector(error:) name:@"False" object:nil];
-//    [nc addObserver:self selector:@selector(getAPInfo:) name:@"GetIPInfo" object:nil];
-//    [nc addObserver:self selector:@selector(cofigurationStarted:) name:@"ConfigurationStartedResponse" object:nil];
-    
-    
-//    activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-//    [activityIndicator setCenter:CGPointMake(160,250)];
-//    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//    [self.view addSubview:activityIndicator];
     
     if ([activityIndicator isAnimating]) {
         [activityIndicator stopAnimating];
@@ -281,14 +260,11 @@
     
     //NSLog(@"出错");
     self.navigationItem.rightBarButtonItem.enabled=YES;
-
+    if ([activityIndicator isAnimating]) {
+        [activityIndicator stopAnimating];
+    }
     
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出错"
-//                                                    message:[NSString stringWithFormat:@"连接出错，请按主页右上角重载按钮重新载入！"]
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"确定"
-//                                          otherButtonTitles:nil];
-//    [alert show];
+    display.text=@"请点击右上角重载按钮重新加载！";
 }
 
 -(void)receive:(NSNotification *)note
@@ -310,8 +286,6 @@
     [display release];
     [DataTable release];
     [activityIndicator release];
-    //[setPage release];
-    //[soap release];
     [nc removeObserver:self];
     [super dealloc];
 }

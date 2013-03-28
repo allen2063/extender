@@ -44,6 +44,7 @@
     nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(nextPage:) name:@"SetRouterWLAN" object:nil];
     [nc addObserver:self selector:@selector(error:) name:@"codeError" object:nil];
+    [nc addObserver:self selector:@selector(error:) name:@"False" object:nil];
     soap = [[YHXSoapAPI alloc]init];
     
     activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -113,47 +114,47 @@
         
     }else self.navigationItem.rightBarButtonItem.enabled=NO;
     
-    if ([security.text rangeOfString:@"WEP"].length>0) {
-        key1TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 270.0f, 100.0f, 30.0f)];
-        key2TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 305.0f, 100.0f, 30.0f)];
-        key3TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 340.0f, 100.0f, 30.0f)];
-        key4TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 375.0f, 100.0f, 30.0f)];
-        
-        key1TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
-        key2TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
-        key3TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
-        key4TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
-        
-        key1TextField.delegate=self;
-        key2TextField.delegate=self;
-        key3TextField.delegate=self;
-        key4TextField.delegate=self;
-
-        [self.view addSubview:key1TextField];
-        [self.view addSubview:key2TextField];
-        [self.view addSubview:key3TextField];
-        [self.view addSubview:key4TextField];
-        
-        key1Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 270, 70, 30)];;
-        key2Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 305, 70, 30)];;
-        key3Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 340, 70, 30)];;
-        key4Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 375, 70, 30)];;
-
-        key1Label.text = @"密钥1：";
-        key2Label.text = @"密钥2：";
-        key3Label.text = @"密钥3：";
-        key4Label.text = @"密钥4：";
-
-        key1Label.backgroundColor = [UIColor clearColor];
-        key2Label.backgroundColor = [UIColor clearColor];
-        key3Label.backgroundColor = [UIColor clearColor];
-        key4Label.backgroundColor = [UIColor clearColor];
-
-        [self.view addSubview:key1Label];
-        [self.view addSubview:key2Label];
-        [self.view addSubview:key3Label];
-        [self.view addSubview:key4Label];
-    }
+//    if ([security.text rangeOfString:@"WEP"].length>0) {
+//        key1TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 270.0f, 100.0f, 30.0f)];
+//        key2TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 305.0f, 100.0f, 30.0f)];
+//        key3TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 340.0f, 100.0f, 30.0f)];
+//        key4TextField = [[UITextField alloc] initWithFrame:CGRectMake(173.0f, 375.0f, 100.0f, 30.0f)];
+//        
+//        key1TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
+//        key2TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
+//        key3TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
+//        key4TextField.borderStyle =UITextBorderStyleRoundedRect;//样式设置为圆角矩形
+//        
+//        key1TextField.delegate=self;
+//        key2TextField.delegate=self;
+//        key3TextField.delegate=self;
+//        key4TextField.delegate=self;
+//
+//        [self.view addSubview:key1TextField];
+//        [self.view addSubview:key2TextField];
+//        [self.view addSubview:key3TextField];
+//        [self.view addSubview:key4TextField];
+//        
+//        key1Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 270, 70, 30)];;
+//        key2Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 305, 70, 30)];;
+//        key3Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 340, 70, 30)];;
+//        key4Label = [[UILabel alloc] initWithFrame:CGRectMake(34, 375, 70, 30)];;
+//
+//        key1Label.text = @"密钥1：";
+//        key2Label.text = @"密钥2：";
+//        key3Label.text = @"密钥3：";
+//        key4Label.text = @"密钥4：";
+//
+//        key1Label.backgroundColor = [UIColor clearColor];
+//        key2Label.backgroundColor = [UIColor clearColor];
+//        key3Label.backgroundColor = [UIColor clearColor];
+//        key4Label.backgroundColor = [UIColor clearColor];
+//
+//        [self.view addSubview:key1Label];
+//        [self.view addSubview:key2Label];
+//        [self.view addSubview:key3Label];
+//        [self.view addSubview:key4Label];
+//    }
     
 
 }
@@ -166,12 +167,13 @@
     [UIView animateWithDuration:0.3f animations:^{
         //int offset = curFrame.origin.y+96-(self.view.frame.size.height-216);
         CGRect rect;
-        if ([security.text isEqualToString:@"WEP"]) //WEP有密钥 得高点
-        {
-             rect = CGRectMake(0, -205, self.view.frame.size.width, self.view.frame.size.height);
-        }else{
-             rect = CGRectMake(0, -96, self.view.frame.size.width, self.view.frame.size.height);}
-        self.view.frame=rect;   
+//        if ([security.text isEqualToString:@"WEP"]) //WEP有密钥 得高点
+//        {
+//             rect = CGRectMake(0, -205, self.view.frame.size.width, self.view.frame.size.height);
+//        }else{
+             rect = CGRectMake(0, -96, self.view.frame.size.width, self.view.frame.size.height);
+//        }
+        self.view.frame=rect;
     }];                             //view 随着键盘上升
     if ([textField.text isEqualToString:@""]) {
         self.navigationItem.rightBarButtonItem.enabled=NO;
@@ -186,7 +188,9 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
-{       
+{
+    
+    
     [UIView animateWithDuration:0.3f animations:^{
         CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
         self.view.frame = rect;}];          //view 回复到原处
@@ -262,14 +266,14 @@
     [activityIndicator release];
     [soap release];
     [setPage release];
-    [key1TextField release];
-    [key2TextField release];
-    [key3TextField release];
-    [key4TextField release];
-    [key1Label release];
-    [key2Label release];
-    [key3Label release];
-    [key4Label release];
+//    [key1TextField release];
+//    [key2TextField release];
+//    [key3TextField release];
+//    [key4TextField release];
+//    [key1Label release];
+//    [key2Label release];
+//    [key3Label release];
+//    [key4Label release];
 
     [super dealloc];
 }
