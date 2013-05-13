@@ -1,18 +1,16 @@
 //
-//  YHXSoapAPI.h
+//  YHXSoapFor5G.h
 //  iphone1
 //
-//  Created by Zeng Yifei on 13-3-12.
+//  Created by Zeng Yifei on 13-4-19.
 //  Copyright (c) 2013年 KaiYan. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "YHXSoapAPI.h"
+#import "YHXAppDelegate.h"
 
-@interface YHXSoapAPI : NSObject<NSXMLParserDelegate,  NSURLConnectionDelegate> 
-{
-    int authenticateValue;
-}
-
+@interface YHXSoapFor5G : NSObject<NSXMLParserDelegate,  NSURLConnectionDelegate>
 @property (strong, nonatomic) NSMutableData *webData;
 @property (strong, nonatomic) NSMutableString *soapResults;
 
@@ -29,12 +27,9 @@
 @property (strong, nonatomic) NSString *matchingElement2;
 @property (strong, nonatomic) NSMutableString *soapResults2;
 @property (nonatomic) BOOL elementFound2;
-@property (strong, nonatomic) NSString *matchingElement3;
-@property (nonatomic) BOOL elementFound3;
-@property (strong, nonatomic) NSString *matchingElement4;
+
 
 -(void)AuthenticateWithUserName:(NSString *)NewUsername Password:(NSString *)NewPassword AndPort:(NSString *)Port;
-//-(void)Authenticate:(id)NewUsername   :(id)NewPassword  :(id)Port;
 -(void)GetAPInfo :(id)NewRadio;
 -(void)CofigurationStarted;
 -(void)SetExtenderMode:(NSString *)NweExtenderMode :(NSString *)Nwe2GRadioMode :(NSString *)Nwe5GRadioMode :(NSString *)NweBondEthernet;

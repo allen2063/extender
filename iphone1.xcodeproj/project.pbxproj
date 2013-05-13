@@ -17,6 +17,10 @@
 		3C88BDBC170412790028B765 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBA170412790028B765 /* 1.png */; };
 		3C88BDBD170412790028B765 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBB170412790028B765 /* 2.png */; };
 		3C88BDBF170415530028B765 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C88BDBE170415530028B765 /* 3.png */; };
+		3C995074172111BF00ADFD76 /* YHXSoapFor5G.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C995073172111BF00ADFD76 /* YHXSoapFor5G.m */; };
+		3CBFF7621712962B00414E72 /* Icon@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CBFF7611712962B00414E72 /* Icon@2X.png */; };
+		3CBFF7641712989200414E72 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CBFF7631712989200414E72 /* iTunesArtwork.png */; };
+		3CC4053217126D1200DCA643 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC4053117126D1200DCA643 /* Icon.png */; };
 		3CF4636716E6E90A00F0FFC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636616E6E90A00F0FFC5 /* UIKit.framework */; };
 		3CF4636916E6E90A00F0FFC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636816E6E90A00F0FFC5 /* Foundation.framework */; };
 		3CF4636B16E6E90A00F0FFC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4636A16E6E90A00F0FFC5 /* CoreGraphics.framework */; };
@@ -45,6 +49,11 @@
 		3C88BDBA170412790028B765 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = resource/1.png; sourceTree = "<group>"; };
 		3C88BDBB170412790028B765 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = resource/2.png; sourceTree = "<group>"; };
 		3C88BDBE170415530028B765 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = resource/3.png; sourceTree = "<group>"; };
+		3C995072172111BF00ADFD76 /* YHXSoapFor5G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHXSoapFor5G.h; sourceTree = "<group>"; };
+		3C995073172111BF00ADFD76 /* YHXSoapFor5G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHXSoapFor5G.m; sourceTree = "<group>"; };
+		3CBFF7611712962B00414E72 /* Icon@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2X.png"; path = "resource/Icon@2X.png"; sourceTree = "<group>"; };
+		3CBFF7631712989200414E72 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = resource/iTunesArtwork.png; sourceTree = "<group>"; };
+		3CC4053117126D1200DCA643 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = resource/Icon.png; sourceTree = "<group>"; };
 		3CF4636216E6E90A00F0FFC5 /* Extender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF4636616E6E90A00F0FFC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CF4636816E6E90A00F0FFC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +119,8 @@
 			children = (
 				3CF4637516E6E90A00F0FFC5 /* YHXAppDelegate.h */,
 				3CF4637616E6E90A00F0FFC5 /* YHXAppDelegate.m */,
+				3C995072172111BF00ADFD76 /* YHXSoapFor5G.h */,
+				3C995073172111BF00ADFD76 /* YHXSoapFor5G.m */,
 				3C4061C116EEC30E00AF8287 /* YHXSoapAPI.h */,
 				3C4061C216EEC30E00AF8287 /* YHXSoapAPI.m */,
 				3C5E05E516E98EDF00FCD93F /* YHXSetPageViewController.h */,
@@ -133,6 +144,9 @@
 				3CF4636E16E6E90A00F0FFC5 /* iphone1-Info.plist */,
 				3CF4636F16E6E90A00F0FFC5 /* InfoPlist.strings */,
 				3CF4637216E6E90A00F0FFC5 /* main.m */,
+				3CC4053117126D1200DCA643 /* Icon.png */,
+				3CBFF7631712989200414E72 /* iTunesArtwork.png */,
+				3CBFF7611712962B00414E72 /* Icon@2X.png */,
 				3CF4637416E6E90A00F0FFC5 /* iphone1-Prefix.pch */,
 				3CF4637816E6E90A00F0FFC5 /* Default.png */,
 				3CF4637A16E6E90A00F0FFC5 /* Default@2x.png */,
@@ -219,6 +233,9 @@
 				3C88BDBC170412790028B765 /* 1.png in Resources */,
 				3C88BDBD170412790028B765 /* 2.png in Resources */,
 				3C88BDBF170415530028B765 /* 3.png in Resources */,
+				3CC4053217126D1200DCA643 /* Icon.png in Resources */,
+				3CBFF7621712962B00414E72 /* Icon@2X.png in Resources */,
+				3CBFF7641712989200414E72 /* iTunesArtwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +252,7 @@
 				3C5E05E816E98EDF00FCD93F /* YHXSetPageViewController.m in Sources */,
 				3C5E05FF16E9E38D00FCD93F /* YHXCodeViewController.m in Sources */,
 				3C4061C316EEC30E00AF8287 /* YHXSoapAPI.m in Sources */,
+				3C995074172111BF00ADFD76 /* YHXSoapFor5G.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,8 +303,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "CA366FF7-131A-4A28-A993-4A2FCB4C18FA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CA366FF7-131A-4A28-A993-4A2FCB4C18FA";
+				PROVISIONING_PROFILE = "541AC930-F7E4-484C-9F99-C1CFFB1BFA65";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "541AC930-F7E4-484C-9F99-C1CFFB1BFA65";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -309,8 +327,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "CA366FF7-131A-4A28-A993-4A2FCB4C18FA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CA366FF7-131A-4A28-A993-4A2FCB4C18FA";
+				PROVISIONING_PROFILE = "541AC930-F7E4-484C-9F99-C1CFFB1BFA65";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "541AC930-F7E4-484C-9F99-C1CFFB1BFA65";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -336,6 +354,7 @@
 				INFOPLIST_FILE = "iphone1/iphone1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = Extender;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,39 +1,39 @@
 //
-//  YHXSoapAPI.m
+//  YHXSoapFor5G.m
 //  iphone1
 //
-//  Created by Zeng Yifei on 13-3-12.
+//  Created by Zeng Yifei on 13-4-19.
 //  Copyright (c) 2013年 KaiYan. All rights reserved.
 //
 
-#import "YHXSoapAPI.h"
-#import "YHXAppDelegate.h"
-#import "YHXViewController.h"
-@implementation YHXSoapAPI
+#import "YHXSoapFor5G.h"
+
+@implementation YHXSoapFor5G
 
 @synthesize webData;
 @synthesize soapResults;
 @synthesize xmlParser;
 @synthesize elementFound;
-@synthesize matchingElement;        //Respondese
-@synthesize matchingElement1;       //APList
+@synthesize matchingElement;
+@synthesize matchingElement1;
 @synthesize conn;
 @synthesize getXMLResults;
 extern NSString* preferredLang;
 extern NSString * ports;
-extern NSMutableString *SessionID;
+
 @synthesize soapResults1;
 @synthesize elementFound1;
-@synthesize matchingElement2;       //isentender
+@synthesize matchingElement2;
 @synthesize soapResults2;
 @synthesize elementFound2;
-@synthesize matchingElement3;       //isextender
-@synthesize elementFound3;
-@synthesize matchingElement4;       //SessionID
+
+
+
+
 -(void)AuthenticateWithUserName:(NSString *)NewUsername Password:(NSString *)NewPassword AndPort:(NSString *)Port;
 {
     matchingElement = @"ResponseCode";
-
+    
     NSString * soapMsg = [NSString stringWithFormat:
                           @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
                           "<SOAP-ENV:Envelope \r\n"
@@ -71,7 +71,7 @@ extern NSMutableString *SessionID;
     }
 }
 
- NSString * port1 = @"80";
+NSString * port2 = @"80";
 
 -(void)GetAPInfo :(id)NewRadio
 {
@@ -91,8 +91,8 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Body>"
                           "</SOAP-ENV:Envelope>",NewRadio];
     NSLog(@"%@",soapMsg);
-        
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -114,11 +114,11 @@ extern NSMutableString *SessionID;
 }
 
 
--(void)CofigurationStarted 
+-(void)CofigurationStarted
 {
     matchingElement = @"ResponseCode";
-    matchingElement4 = @"SessionID";
-    SessionID = [[NSMutableString alloc ]initWithString:@"1"];
+    //matchingElement1 = @"APList";
+    
     NSString * soapMsg = [NSString stringWithFormat:
                           @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                           "<SOAP-ENV:Envelope "
@@ -132,7 +132,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>"];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -177,7 +177,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewExtenderMode,New2GRadioMode,New5GRadioMode,NewBondEthernet];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -223,7 +223,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode,NewVerify];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -266,13 +266,13 @@ extern NSMutableString *SessionID;
                           "<NewWEPLength xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewWEPLength>"
                           "<NewKeyIndex xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewKeyIndex>"
                           "<NewWEPPassphrase xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewWEPPassphrase>"
-                          "<NewVerify xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewVerify>"                          
+                          "<NewVerify xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewVerify>"
                           "</SetRouterWLANWEPByKeys>"
                           "</SOAP-ENV:Body>"
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode,NewWEPAuthType,NewWEPLength,NewKeyIndex,NewWEPPassphrase,NewVerify];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -319,7 +319,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode,NewWPAEncryptionModes,NewWPAPassphrase,NewVerify];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -341,7 +341,7 @@ extern NSMutableString *SessionID;
 }
 
 
--(void)SetWLANNoSecurity:(NSString *)NewRadio :(NSString *)NewSSID :(NSString *)NewChannel :(NSString *)NewWirelessMode 
+-(void)SetWLANNoSecurity:(NSString *)NewRadio :(NSString *)NewSSID :(NSString *)NewChannel :(NSString *)NewWirelessMode
 {
     matchingElement = @"ResponseCode";
     //matchingElement1 = @"APList";
@@ -350,7 +350,7 @@ extern NSMutableString *SessionID;
     NSString * soapMsg = [NSString stringWithFormat:
                           @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                           "<SOAP-ENV:Envelope "
-                          "xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\""
+                          "xmlns:SOAP-ENV=\"http:// schemas.xmlsoap.org/soap/envelope/\""
                           "xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" "
                           "xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\">"
                           "<SOAP-ENV:Body>"
@@ -364,7 +364,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -413,7 +413,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode,NewWEPAuthType,NewWEPLength,NewKeyIndex,Newkey1,Newkey2,Newkey3,Newkey4];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -434,7 +434,7 @@ extern NSMutableString *SessionID;
     }
 }
 
--(void)SetWLANWPAPSKByPassphrase:(NSString *)NewRadio :(NSString *)NewSSID :(NSString *)NewChannel :(NSString *)NewWirelessMode :(NSString *)NewWPAEncryptionModes :(NSString *) NewWPAPassphrase 
+-(void)SetWLANWPAPSKByPassphrase:(NSString *)NewRadio :(NSString *)NewSSID :(NSString *)NewChannel :(NSString *)NewWirelessMode :(NSString *)NewWPAEncryptionModes :(NSString *) NewWPAPassphrase
 {
     matchingElement = @"ResponseCode";
     //matchingElement1 = @"APList";
@@ -459,7 +459,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>",NewRadio,NewSSID,NewChannel,NewWirelessMode,NewWPAEncryptionModes,NewWPAPassphrase];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -493,15 +493,13 @@ extern NSMutableString *SessionID;
                           "xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\">"
                           "<SOAP-ENV:Body>"
                           "<ConfigurationFinished>"
-                          "<NewSessionID xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">%@</NewSessionID>"
                           "<NewConfigStatus xsi:type=\"xsd:string\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\">1</NewConfigStatus>"
                           "</ConfigurationFinished>"
                           "</SOAP-ENV:Body>"
-                          "</SOAP-ENV:Envelope>",SessionID];
-    NSLog(@"%@",SessionID);
+                          "</SOAP-ENV:Envelope>"];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -541,7 +539,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>"];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -566,7 +564,6 @@ extern NSMutableString *SessionID;
 {
     matchingElement = @"ResponseCode";
     matchingElement2 = @"IsEntender";
-    matchingElement3 = @"IsExtender";
     
     NSString * soapMsg = [NSString stringWithFormat:
                           @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
@@ -581,7 +578,7 @@ extern NSMutableString *SessionID;
                           "</SOAP-ENV:Envelope>"];
     NSLog(@"%@",soapMsg);
     
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:%@/soap/server_sa/",port1]] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.mywifiext.com:5000/soap/server_sa/"]] ;
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url];               //设置地址
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
     
@@ -600,9 +597,8 @@ extern NSMutableString *SessionID;
     else {
         NSLog(@"not ready");
     }
-
+    
 }
-
 
 
 #pragma mark -
@@ -615,14 +611,14 @@ extern NSMutableString *SessionID;
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *) response{
     [webData setLength: 0];
     NSLog(@"  刚开始接受响应时调用");
-
+    
 }
 
 // 每接收到一部分数据就追加到webData中
 -(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *) data {
     [webData appendData:data];
     NSLog(@"  每接收到一部分数据就追加到webData中");
-
+    
 }
 
 
@@ -630,11 +626,11 @@ extern NSMutableString *SessionID;
 // 出现错误时
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *) error {
     conn = nil;
-    webData = nil;    NSLog(@" connection 出现错误时");
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"False"
-                          object:self
-         ];
+    webData = nil;    NSLog(@"  出现错误时");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"False"
+                                                        object:self
+     ];
     
     if ([preferredLang isEqualToString:@"zh-Hans"]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出错"
@@ -651,7 +647,7 @@ extern NSMutableString *SessionID;
                                               otherButtonTitles:nil];
         [alert show];
     }
-
+    
     
     
 }
@@ -666,15 +662,14 @@ extern NSMutableString *SessionID;
     getXMLResults = [[NSMutableString alloc] initWithString:theXML];
     NSLog(@"11完成接收数据时调用11%@完成接收数据时调用", getXMLResults);
     
-//    ||[getXMLResults rangeOfString:@"window.location.href = "].length>0
+    //    ||[getXMLResults rangeOfString:@"window.location.href = "].length>0
     if ([getXMLResults rangeOfString:@"ResponseCode"].length==0){
-        port1=@"5000";   
+        port2=@"5000";
         NSString * admin = @"admin";
         NSString * password = @"password";
-          [self AuthenticateWithUserName:admin Password:password AndPort:@"5000"];
-        ports =port1;
+        [self AuthenticateWithUserName:admin Password:password AndPort:@"5000"];
     }
-
+    
     if ([getXMLResults rangeOfString:@"system cannot find the path"].length>0) {
         NSLog(@"出错");
         
@@ -695,7 +690,7 @@ extern NSMutableString *SessionID;
         }
         
         
-
+        
         NSNotificationCenter *nc1 = [NSNotificationCenter defaultCenter];
         [nc1 postNotificationName:@"False" object:self ];
     }
@@ -703,7 +698,7 @@ extern NSMutableString *SessionID;
     
     // 使用NSXMLParser解析出我们想要的结果
     xmlParser = [[NSXMLParser alloc] initWithData: webData];
-
+    
     [xmlParser setDelegate: self];
     [xmlParser setShouldResolveExternalEntities: YES];
     [xmlParser parse];
@@ -740,46 +735,33 @@ extern NSMutableString *SessionID;
     }
     
     
-    if ([elementName isEqualToString:matchingElement2]||[elementName isEqualToString:matchingElement3]) {
+    if ([elementName isEqualToString:matchingElement2]) {
         if (!soapResults2) {
             soapResults2 = [[NSMutableString alloc] init];
         }
         elementFound2 =YES;
     }
     
-    if ([elementName isEqualToString:matchingElement4]) {
-        elementFound3 =YES;
-    }
-    
 }
 
 // 追加找到的元素值，一个元素值可能要分几次追加
 -(void)parser:(NSXMLParser *) parser foundCharacters:(NSString *)string {
-    if (elementFound) {                                         //respondse
+    if (elementFound) {
         [soapResults appendString: string];
     }
     
-    if (elementFound1) {                                        //aplist
+    if (elementFound1) {
         if (![string isEqualToString:@"000"]&&([string rangeOfString:@"@"].length>0)) {
             [soapResults1 appendString: string];
+            NSLog(@"222%@333",string);
         }
     }
     
-    if (elementFound2) {                                        //isextender
-        if (![string isEqualToString:@"000"]&&(([string rangeOfString:@"2"].length>0)||([string rangeOfString:@"1"].length>0))&&(![string isEqualToString:@"@"])) {
+    if (elementFound2) {
+        if (![string isEqualToString:@"000"]) {
             [soapResults2 appendString: string];
-            NSLog(@"isextender  %@",string);
-
         }
-
-    }
-    
-    if (elementFound3) {                                        //SessinSSID
-        if (![string isEqualToString:@"2"]&&![string isEqualToString:@"1"]&&![string isEqualToString:@"000"]&&[string rangeOfString:@"@"].length==0) {
-            [SessionID setString: string];
-            NSLog(@"session  %@",SessionID);
-            elementFound3=NO;
-        }
+        
     }
 }
 
@@ -793,94 +775,88 @@ extern NSMutableString *SessionID;
         //NSString *soapResults1=@"   123123wgargraga124124    ";
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         //NSLog(@"Sending notification");　 //使用NSDictionary 存储要传递的数据
-//        NSMutableDictionary *d = [NSDictionary dictionaryWithObject:soapResults1 forKey:@"1"];
-        
-        NSMutableDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:soapResults1,@"1",@"2.4G",@"2", nil];
-        
-        //NSMutableDictionary *e = [NSDictionary dictionaryWithObject:@"2.4G" forKey:@"2"];
-        
+        NSMutableDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:soapResults1,@"1",@"5G",@"2", nil];
         //发送notification
-         //NSLog(@"getXMLResults%@  1212344",getXMLResults);
-        //NSLog(@"soapResults1   %@  1212344",soapResults1);
-    
-     if([soapResults rangeOfString:@"000"].length>0){                   //代码叠加   000010
-         if (([getXMLResults rangeOfString:@"IsEntender"].length>0)||([getXMLResults rangeOfString:@"IsExtender"].length>0)) {
-             isextender =[[NSString alloc] initWithString:  soapResults2];
-             NSLog(@"%@是不是extender %@  soap ",soapResults,isextender);
-         }
-        if ([getXMLResults rangeOfString:@"GetAPInfo"].length>0) {
-            if ([getXMLResults rangeOfString:@"APList>0<"].length>0) {
+        //NSLog(@"getXMLResults%@  1212344",getXMLResults);
+        NSLog(@"soapResults1   %@  1212344",soapResults1);
+        
+        if([soapResults rangeOfString:@"000"].length>0){                   //代码叠加   000010
+            if (([getXMLResults rangeOfString:@"IsEntender"].length>0)||([getXMLResults rangeOfString:@"IsExtender"].length>0)) {
+                isextender=soapResults2;
+                NSLog(@"%@是不是extender %@",soapResults,isextender);
+            }
+            if ([getXMLResults rangeOfString:@"GetAPInfo"].length>0) {
+                if ([getXMLResults rangeOfString:@"APList>0<"].length>0) {
+                    
+                    if ([preferredLang isEqualToString:@"zh-Hans"]) {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"获取路由列表失败"
+                                                                        message:[NSString stringWithFormat:@"请按右上角的刷新按钮重试！"]
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"确定"
+                                                              otherButtonTitles:nil];
+                        [alert show];
+                    }else {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to get the routing list"
+                                                                        message:[NSString stringWithFormat:@"Please click the top right corner of the refresh button to try again"]
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    
+                    [nc postNotificationName:@"False" object:self userInfo:d];
+                }
+                else{
+                    NSLog(@"GetIPInfo………………nc");
+                    [nc postNotificationName:@"GetIPInfo" object:self userInfo:d];}
+            }
+            else if ([getXMLResults rangeOfString:@"ConfigurationStartedResponse"].length>0){
+                NSLog(@"CofigurationStarted………………nc");
+                [nc postNotificationName:@"ConfigurationStartedResponse" object:self userInfo:d];
+            }
+            else if ([getXMLResults rangeOfString:@"AuthenticateResponse"].length>0){
+                [nc postNotificationName:@"Authenticate" object:self userInfo:d];
+            }
+            else if([getXMLResults rangeOfString:@"SetRouterWLAN"].length>0){
+                NSLog(@"SetRouterWLAN………………nc");
+                [nc postNotificationName:@"SetRouterWLAN" object:self userInfo:d];
+            }else if([getXMLResults rangeOfString:@"SetWLAN"].length>0){
+                NSLog(@"SetWLAN………………nc");
+                [nc postNotificationName:@"SetWLAN" object:self userInfo:d];
+            }else if([getXMLResults rangeOfString:@"ConfigurationFinished"].length>0){
+                NSLog(@"ConfigurationFinished………………nc");
                 
                 if ([preferredLang isEqualToString:@"zh-Hans"]) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"获取路由列表失败"
-                                                                    message:[NSString stringWithFormat:@"请按右上角的刷新按钮重试！"]
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"设置成功"
+                                                                    message:[NSString stringWithFormat:@"按确定后将退出程序，请等待中继器重启！"]
                                                                    delegate:self
                                                           cancelButtonTitle:@"确定"
                                                           otherButtonTitles:nil];
                     [alert show];
+                    alert.tag=1;
                 }else {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to get the routing list"
-                                                                    message:[NSString stringWithFormat:@"Please click the top right corner of the refresh button to try again"]
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Succeed"
+                                                                    message:[NSString stringWithFormat:@"After press ok to exit the program,Please wait for repeater to restart!"]
                                                                    delegate:self
                                                           cancelButtonTitle:@"OK"
                                                           otherButtonTitles:nil];
                     [alert show];
+                    alert.tag=1;
                 }
                 
-                [nc postNotificationName:@"False" object:self userInfo:d];
+                [nc postNotificationName:@"ConfigurationFinished" object:self userInfo:d];
+            } else if ([getXMLResults rangeOfString:@"SetEnableResponse"].length>0){
+                NSLog(@"SetEnable………………nc");
+                
+                [nc postNotificationName:@"SetEnable" object:self userInfo:d];
             }
-            else{
-            NSLog(@"GetIPInfo………………nc");
-
-                [nc postNotificationName:@"GetIPInfo" object:self userInfo:d];}
         }
-        else if ([getXMLResults rangeOfString:@"ConfigurationStartedResponse"].length>0){
-            NSLog(@"CofigurationStarted………………nc");
-            [nc postNotificationName:@"ConfigurationStartedResponse" object:self userInfo:d];
-        }
-        else if ([getXMLResults rangeOfString:@"AuthenticateResponse"].length>0){
-            YHXSoapAPI * soap = [[YHXSoapAPI alloc]init];
-            [soap isExtender];
-            [nc postNotificationName:@"Authenticate" object:self userInfo:d];
-        }
-        else if([getXMLResults rangeOfString:@"SetRouterWLAN"].length>0){
-            NSLog(@"SetRouterWLAN………………nc");
-            [nc postNotificationName:@"SetRouterWLAN" object:self userInfo:d];
-        }else if([getXMLResults rangeOfString:@"SetWLAN"].length>0){
-            NSLog(@"SetWLAN………………nc");
-            [nc postNotificationName:@"SetWLAN" object:self userInfo:d];
-        }else if([getXMLResults rangeOfString:@"ConfigurationFinished"].length>0){
-            NSLog(@"ConfigurationFinished………………nc");
-            
-            if ([preferredLang isEqualToString:@"zh-Hans"]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"设置成功"
-                                                                message:[NSString stringWithFormat:@"按确定后将退出程序，请等待中继器重启！"]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil];
-                [alert show];
-                alert.tag=1;
-            }else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Succeed"
-                                                                message:[NSString stringWithFormat:@"After press ok to exit the program,Please wait for repeater to restart!"]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-                alert.tag=1;
-            }
-            [nc postNotificationName:@"ConfigurationFinished" object:self userInfo:d];
-        } else if ([getXMLResults rangeOfString:@"SetEnableResponse"].length>0){
-            NSLog(@"SetEnable………………nc");
-        
-            [nc postNotificationName:@"SetEnable" object:self userInfo:d];
-        }
-    }
-    else if ([soapResults isEqualToString:@"401"])
+        else if ([soapResults isEqualToString:@"401"])
         {
             [nc postNotificationName:@"False"
                               object:self
              ];
+            
             if ([preferredLang isEqualToString:@"zh-Hans"]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出错"
                                                                 message:[NSString stringWithFormat:@"连接出错，请按主页右上角重载按钮重新载入！"]
@@ -896,11 +872,11 @@ extern NSMutableString *SessionID;
                                                       otherButtonTitles:nil];
                 [alert show];
             }
-
-           
-
+            
+            
+            
         }
-    else if ([soapResults rangeOfString:@"010"].length>0){                               //代码叠加 返回指令叠加  必须
+        else if ([soapResults rangeOfString:@"010"].length>0){                               //代码叠加 返回指令叠加  必须
             if ([getXMLResults rangeOfString:@"SetRouterWLAN"].length>0) {
                 [nc postNotificationName:@"codeError" object:self userInfo:d];
                 
@@ -919,19 +895,18 @@ extern NSMutableString *SessionID;
                                                           otherButtonTitles:nil];
                     [alert show];
                 }
+                
+                
             }
         }
-    else if ([soapResults isEqualToString:@"001"]){
-        if ([preferredLang isEqualToString:@"zh-Hans"]) {
-            [self creatAlterWithTitle:@"错误" AndMessage:@"由于固件版本原因，设置失败，错误代码001" AndCancleButtonTitle:@"退出" AndOtherButtonTitle:@"重试" AndTag:11];
-        }else [self creatAlterWithTitle:@"ERROR" AndMessage:@"Due to the firmware version, set fails, an error code 001" AndCancleButtonTitle:@"Exit" AndOtherButtonTitle:@"Retry" AndTag:11];
-    }
-    else if ([soapResults isEqualToString:@"0"]) {
-        YHXSoapAPI * soap = [[YHXSoapAPI alloc]init];
-        [soap isExtender];
-                [nc postNotificationName:@"Authenticate"  object:self   userInfo:d];
-    }
-
+        else if ([soapResults isEqualToString:@"0"]) {
+            [nc postNotificationName:@"Authenticate"
+                              object:self
+                            userInfo:d];
+        }
+        
+        
+        
         elementFound = FALSE;
         // 强制放弃解析
         [xmlParser abortParsing];
@@ -953,23 +928,6 @@ extern NSMutableString *SessionID;
     }
 }
 
-- (void)alertView:(UIAlertView *)alert clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (alert.tag) {
-        case 11:
-            if (buttonIndex==0) {
-                NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-                [nc postNotificationName:@"close" object:self ];
-            }
-            else if (buttonIndex ==1)[self ConfigurationFinished];
-            
-            break;
-            
-        default:
-            break;
-    }
-}
-
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex :(NSInteger)buttonIndex
 {
     if (alertView.tag==1) {
@@ -978,18 +936,6 @@ extern NSMutableString *SessionID;
     }
 }
 
--(void)creatAlterWithTitle:(NSString *)title AndMessage:(NSString *)Message AndCancleButtonTitle:(NSString *)cancleButtonTitle AndOtherButtonTitle:(NSString *)otherButtonTitle AndTag:(int)tags
-{
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:Message
-                                                   delegate:self
-                                          cancelButtonTitle:cancleButtonTitle
-                                          otherButtonTitles:otherButtonTitle, nil];
-    [alert show];
-    alert.tag=tags;
-    [alert release];
-}
 
 
 @end

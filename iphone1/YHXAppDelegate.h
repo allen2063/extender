@@ -10,17 +10,24 @@
 
 @class YHXViewController;
 
+NSString* preferredLang;
+NSString * ports;
+NSString * isextender;
+NSMutableString *SessionID;
 
-
+BOOL channel2G;
+BOOL channel5G;
 @interface YHXAppDelegate : UIResponder <UIApplicationDelegate>
 {
     NSMutableArray * my;
     NSString * str;
 }
 
+
+
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) YHXViewController *viewController;
+@property (strong, nonatomic) YHXViewController * viewController;
 @property (strong, nonatomic) UINavigationController *nav;
 
 @property (nonatomic,retain)NSMutableArray *my;
